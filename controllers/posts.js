@@ -1,16 +1,16 @@
 const { successHandle, errorHandle } = require('../service/handle');
-const Posts = require('../models/post');
+const Post = require('../models/postModel');
 
 const posts = {
   async getPosts(req, res) {
-    const allPosts = await Posts.find();
+    const allPosts = await Post.find();
     successHandle(res, '取得成功', allPosts);
   },
   async createdPosts(req, res) {
     try {
       const data = req.body;
       if (data.content !== '') {
-        const newPost = await Posts.create({
+        const newPost = await Post.create({
           name: data.name,
           tags: data.tags,
           type: data.type,
@@ -25,21 +25,21 @@ const posts = {
     }
   },
   async deleteAll(req, res) {
-    // 取出 req 的 Url，再判斷是否等於 '/posts/'
-    if(req.originalUrl == '/posts/') {
+    // 取出 req 的 Url，再判斷是否等於 '/api/posts/'
+    if(req.originalUrl == '/api/posts/') {
       errorHandle(res, '欄位沒有正確，或沒有此 ID');
     } else {
-      await Posts.deleteMany({});
-      const deleteAll = await Posts.find();
+      await Post.deleteMany({});
+      const deleteAll = await Post.find();
       successHandle(res, '刪除成功', deleteAll);
     }
   },
   async deleteSingle(req, res) {
     try {
       const id = req.params.id;
-      const deleteSingle = await Posts.findByIdAndDelete(id);
+      const deleteSingle = await Post.findByIdAndDelete(id);
       if (deleteSingle) {
-        const post = await Posts.find();
+        const post = await Post.find();
         successHandle(res, '刪除成功', post);
       } else {
         errorHandle(res, '查無此 ID');
@@ -55,7 +55,7 @@ const posts = {
       if (!data.content) {
         return errorHandle(res, '欄位是空的，請填寫');
       }
-      const patchPosts = await Posts.findByIdAndUpdate(id, {
+      const patchPosts = await Post.findByIdAndUpdate(id, {
         name: data.name,
         content: data.content,
         tags: data.tags,
@@ -68,7 +68,7 @@ const posts = {
       if (!patchPosts) {
         return errorHandle(res, '查無此 ID');
       }
-      const post = await Posts.find();
+      const post = await Post.find();
       successHandle(res, '更新成功', post);
     } catch (error) {
       errorHandle(res, "欄位沒有正確，或沒有此 ID");

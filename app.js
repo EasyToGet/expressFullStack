@@ -3,6 +3,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const cors = require('cors');
+const { notFound } = require('./service/http');
 
 var indexRouter = require('./routes/index');
 var postsRouter = require('./routes/posts');
@@ -20,7 +21,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/posts', postsRouter);
+app.use('/api', postsRouter);
 app.use('/users', usersRouter);
+app.use(notFound);
 
 module.exports = app;
