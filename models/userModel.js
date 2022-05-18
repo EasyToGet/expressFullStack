@@ -13,10 +13,6 @@ const userSchema = new mongoose.Schema(
       lowercase: true,
       select: false
     },
-    gender: {
-      type: String,
-      enum: ['female', 'male', ''] // 允許使用的字串集合
-    },
     password: {
       type: String,
       required: [true, '請輸入您的密碼'],

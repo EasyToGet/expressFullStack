@@ -27,7 +27,7 @@ const posts = {
   async deleteAll(req, res) {
     // 取出 req 的 Url，再判斷是否等於 '/api/posts/'
     if(req.originalUrl == '/api/posts/') {
-      errorHandle(res, '欄位沒有正確，或沒有此 ID');
+      errorHandle(res, '刪除失敗，查無此 ID');
     } else {
       await Post.deleteMany({});
       const deleteAll = await Post.find();
@@ -42,7 +42,7 @@ const posts = {
         const post = await Post.find();
         successHandle(res, '刪除成功', post);
       } else {
-        errorHandle(res, '查無此 ID');
+        errorHandle(res, '刪除失敗，查無此 ID');
       }
     } catch (error) {
       errorHandle(res, error.message);
@@ -66,7 +66,7 @@ const posts = {
         runValidators: true
       });
       if (!patchPosts) {
-        return errorHandle(res, '查無此 ID');
+        return errorHandle(res, '更新失敗，查無此 ID');
       }
       const post = await Post.find();
       successHandle(res, '更新成功', post);
