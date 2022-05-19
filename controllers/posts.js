@@ -3,7 +3,13 @@ const Post = require('../models/postModel');
 
 const posts = {
   async getPosts(req, res) {
-    const allPosts = await Post.find();
+    // asc 遞增 (由小到大，由舊到新): "createdAt" ; desc 遞減 (由大到小、由新到舊): "-createdAt"
+    const timeSort = req.query.timeSort === "asc" ? "createdAt" : "-createdAt";
+    const q = req.query.keyword !== undefined ? { "content": new RegExp(req.query.keyword) } : {};
+    const allPosts = await Post.find(q).populate({
+      path: 'user',
+      select: 'name photo'
+    }).sort(timeSort);
     successHandle(res, '取得成功', allPosts);
   },
   async createdPosts(req, res) {
@@ -11,7 +17,7 @@ const posts = {
       const data = req.body;
       if (data.content !== '') {
         const newPost = await Post.create({
-          name: data.name,
+          user: data.user,
           tags: data.tags,
           type: data.type,
           content: data.content
@@ -26,7 +32,7 @@ const posts = {
   },
   async deleteAll(req, res) {
     // 取出 req 的 Url，再判斷是否等於 '/api/posts/'
-    if(req.originalUrl == '/api/posts/') {
+    if (req.originalUrl == '/api/posts/') {
       errorHandle(res, '刪除失敗，查無此 ID');
     } else {
       await Post.deleteMany({});
@@ -61,14 +67,17 @@ const posts = {
         tags: data.tags,
         type: data.type
       },
-      {
-        new: true,
-        runValidators: true
-      });
+        {
+          new: true,
+          runValidators: true
+        });
       if (!patchPosts) {
         return errorHandle(res, '更新失敗，查無此 ID');
       }
-      const post = await Post.find();
+      const post = await Post.find().populate({
+        path: 'user',
+        select: 'name photo'
+      });
       successHandle(res, '更新成功', post);
     } catch (error) {
       errorHandle(res, "欄位沒有正確，或沒有此 ID");
