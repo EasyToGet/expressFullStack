@@ -5,7 +5,8 @@ const posts = {
   async getPosts(req, res) {
     // asc 遞增 (由小到大，由舊到新): "createdAt" ; desc 遞減 (由大到小、由新到舊): "-createdAt"
     const timeSort = req.query.timeSort === "asc" ? "createdAt" : "-createdAt";
-    const q = req.query.keyword !== undefined ? { "content": new RegExp(req.query.keyword) } : {};
+    // new RegExp() 將字串轉成正規表達式，例如: "cool" -> /cool/
+    const q = req.query.keyword !== undefined ? { "content": new RegExp(req.query.keyword) } : {}; 
     const allPosts = await Post.find(q).populate({
       path: 'user',
       select: 'name photo'
