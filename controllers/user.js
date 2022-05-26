@@ -25,8 +25,8 @@ const users = {
     }
   },
   async deleteAll(req, res) {
-    // 取出 req 的 Url，再判斷是否等於 '/users/'
-    if (req.originalUrl == '/users/') {
+    // 取出 req 的 Url，再判斷是否等於 '/api/users/'
+    if (req.originalUrl == '/api/users/') {
       errorHandle(res, '刪除失敗，查無此 ID');
     } else {
       await User.deleteMany({});
