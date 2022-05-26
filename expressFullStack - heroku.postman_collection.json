@@ -1,8 +1,9 @@
 {
 	"info": {
 		"_postman_id": "01471a5e-5459-4cad-9ad5-05a25fac6756",
-		"name": "MetaWall - heroku",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"name": "expressFullStack - heroku",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9557010"
 	},
 	"item": [
 		{
@@ -55,7 +56,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"user\": \"628679f197a628948b9c314a\",\r\n    \"content\": \"我要成為海賊王\",\r\n    \"tags\": \"海賊\",\r\n    \"type\": \"group\"\r\n}",
+					"raw": "{\r\n    \"user\": \"628fb80090018419dd96ab16\",\r\n    \"content\": \"我要成為海賊王\",\r\n    \"tags\": \"海賊\",\r\n    \"type\": \"group\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -123,7 +124,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://secret-hollows-86027.herokuapp.com/api/posts/62867b0497a628948b9c316a",
+					"raw": "https://secret-hollows-86027.herokuapp.com/api/posts/628fb8c190018419dd96ab2e",
 					"protocol": "https",
 					"host": [
 						"secret-hollows-86027",
@@ -133,7 +134,7 @@
 					"path": [
 						"api",
 						"posts",
-						"62867b0497a628948b9c316a"
+						"628fb8c190018419dd96ab2e"
 					]
 				}
 			},
@@ -154,7 +155,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://secret-hollows-86027.herokuapp.com/api/posts/62867b0597a628948b9c316c",
+					"raw": "https://secret-hollows-86027.herokuapp.com/api/posts/628fb8b890018419dd96ab2a",
 					"protocol": "https",
 					"host": [
 						"secret-hollows-86027",
@@ -164,7 +165,7 @@
 					"path": [
 						"api",
 						"posts",
-						"62867b0597a628948b9c316c"
+						"628fb8b890018419dd96ab2a"
 					]
 				}
 			},
@@ -188,7 +189,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://secret-hollows-86027.herokuapp.com/users",
+					"raw": "https://secret-hollows-86027.herokuapp.com/api/users",
 					"protocol": "https",
 					"host": [
 						"secret-hollows-86027",
@@ -196,6 +197,7 @@
 						"com"
 					],
 					"path": [
+						"api",
 						"users"
 					]
 				}
@@ -209,7 +211,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Mark\",\r\n    \"email\": \"qqq@gmail.com\",\r\n    \"password\": \"12345678\",\r\n    \"photo\": \"aaaa\"\r\n}",
+					"raw": "{\r\n    \"name\": \"Mary\",\r\n    \"email\": \"xxx@gmail.com\",\r\n    \"password\": \"12345678\",\r\n    \"photo\": \"xxx\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -217,7 +219,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://secret-hollows-86027.herokuapp.com/users",
+					"raw": "https://secret-hollows-86027.herokuapp.com/api/users",
 					"protocol": "https",
 					"host": [
 						"secret-hollows-86027",
@@ -225,6 +227,7 @@
 						"com"
 					],
 					"path": [
+						"api",
 						"users"
 					]
 				}
@@ -246,7 +249,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://secret-hollows-86027.herokuapp.com/users",
+					"raw": "https://secret-hollows-86027.herokuapp.com/api/users",
 					"protocol": "https",
 					"host": [
 						"secret-hollows-86027",
@@ -254,6 +257,7 @@
 						"com"
 					],
 					"path": [
+						"api",
 						"users"
 					]
 				}
@@ -275,7 +279,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://secret-hollows-86027.herokuapp.com/users/62867a1097a628948b9c314f",
+					"raw": "https://secret-hollows-86027.herokuapp.com/api/users/628fb7eb90018419dd96ab12",
 					"protocol": "https",
 					"host": [
 						"secret-hollows-86027",
@@ -283,8 +287,9 @@
 						"com"
 					],
 					"path": [
+						"api",
 						"users",
-						"62867a1097a628948b9c314f"
+						"628fb7eb90018419dd96ab12"
 					]
 				}
 			},
@@ -297,7 +302,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Mary\",\r\n    \"email\": \"vvv@gmail.com\",\r\n    \"password\": \"zxcvbnma\",\r\n    \"photo\": \"vvvv\"\r\n}",
+					"raw": "{\r\n    \"name\": \"John\",\r\n    \"email\": \"vvv@gmail.com\",\r\n    \"password\": \"zxcvbnma\",\r\n    \"photo\": \"vvvv\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -305,7 +310,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://secret-hollows-86027.herokuapp.com/users/628679ff97a628948b9c314c",
+					"raw": "https://secret-hollows-86027.herokuapp.com/api/users/628fb7f590018419dd96ab14",
 					"protocol": "https",
 					"host": [
 						"secret-hollows-86027",
@@ -313,8 +318,9 @@
 						"com"
 					],
 					"path": [
+						"api",
 						"users",
-						"628679ff97a628948b9c314c"
+						"628fb7f590018419dd96ab14"
 					]
 				}
 			},
