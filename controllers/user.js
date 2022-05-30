@@ -9,7 +9,8 @@ const users = {
   async createdUsers(req, res) {
     try {
       const data = req.body;
-      if (data.email !== '') {
+      console.log(data.email);
+      if (data.email) {
         const newUsers = await User.create({
           name: data.name,
           email: data.email,
@@ -30,7 +31,7 @@ const users = {
       errorHandle(res, '刪除失敗，查無此 ID');
     } else {
       await User.deleteMany({});
-      const deleteAll = await User.find();
+      const deleteAll = [];
       successHandle(res, '刪除成功', deleteAll);
     }
   },

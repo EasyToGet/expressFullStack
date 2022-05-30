@@ -16,7 +16,7 @@ const posts = {
   async createdPosts(req, res) {
     try {
       const data = req.body;
-      if (data.content !== '') {
+      if (data.content) {
         const newPost = await Post.create({
           user: data.user,
           tags: data.tags,
@@ -37,7 +37,7 @@ const posts = {
       errorHandle(res, '刪除失敗，查無此 ID');
     } else {
       await Post.deleteMany({});
-      const deleteAll = await Post.find();
+      const deleteAll = [];
       successHandle(res, '刪除成功', deleteAll);
     }
   },
